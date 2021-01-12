@@ -18,7 +18,8 @@ React 状态管理，其实就是变着花样 `setState` 。我们知道 React �
 - 自己封
     - 可以把 Immer.js 再封装一次，使其成为完整的状态管理工具  
       [final-state](https://github.com/final-state/final-state) 这库不更新了，要用最好手动抄一遍
-    - 可以把 Vue3 的 ref/reactive/watchEffect 拿出来封成 react 的状态管理工具，省得自己研究 proxy
+    - 可以把 Vue3 的 ref/reactive/watchEffect 拿出来封成 react 的状态管理工具，省得自己研究 proxy  
+      [@hyrious/use-reactive](https://www.npmjs.com/package/@hyrious/use-reactive)
     - 可以在组件内部用 [useReactive](https://ahooks.js.org/zh-CN/hooks/advanced/use-reactive/) 代替 useState，和上面的状态管理工具结合使用，对于不需要提到上层管理的状态可以用这个小 Hooks 简化写法。
 
 ### 什么时候使用 state
