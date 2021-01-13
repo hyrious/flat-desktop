@@ -1,5 +1,9 @@
 import React from "react";
 
+import { AgoraRtcEngine } from "./utils/agora";
+
 export function App() {
-    return <div>Hello world!</div>;
+    const engine = new AgoraRtcEngine();
+    console.log(engine);
+    return <div>{AgoraRtcEngine.toString()}</div>;
 }

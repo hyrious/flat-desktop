@@ -8,8 +8,8 @@ function createWindowIfNotExist() {
             width: 400,
             height: 300,
             webPreferences: {
-                nodeIntegration: false,
-                contextIsolation: true,
+                nodeIntegration: true,
+                contextIsolation: false,
             },
         });
         win.loadURL("http://localhost:3000");
