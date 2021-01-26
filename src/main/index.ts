@@ -23,3 +23,7 @@ app.on("activate", () => {
         createWindowIfNotExist();
     }
 });
+
+app.on("window-all-closed", () => {
+    app.quit();
+});
