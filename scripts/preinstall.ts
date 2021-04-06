@@ -1,13 +1,13 @@
 import fs from "fs";
 import path from "path";
 
-const electronVersion = "11.0.0";
-const arch = process.platform === "win32" ? "ia32" : "x64";
-const prebuilt = true;
 const agoraSdkOptions = {
-    electronVersion,
-    arch,
-    prebuilt,
+    electronVersion: "11.0.0",
+    arch: process.platform === "win32" ? "ia32" : "x64",
+    msvs_version: "2017",
+    silent: false,
+    debug: false,
+    prebuilt: true,
 };
 
 const npmrcPath = path.join(__dirname, "..", ".npmrc");

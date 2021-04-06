@@ -16,6 +16,8 @@ function createWindowIfNotExist() {
     }
 }
 
+app.allowRendererProcessReuse = false;
+
 app.whenReady().then(createWindowIfNotExist);
 
 app.on("activate", () => {
