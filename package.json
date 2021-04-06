@@ -3,6 +3,7 @@
     "main": "dist/index.js",
     "scripts": {
         "preinstall": "esbuild-dev scripts/preinstall.ts",
+        "postinstall": "esbuild-dev scripts/hack-white-web-sdk.ts",
         "dev": "concurrently --kill-others npm:dev:*",
         "dev:main": "esbuild-dev scripts/main.ts",
         "serve:main": "electron .",
@@ -12,7 +13,7 @@
         "agora-electron-sdk": "education290",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
-        "white-web-sdk": "file:vendor/white-web-sdk"
+        "white-web-sdk": "^2.12.7"
     },
     "devDependencies": {
         "@hyrious/esbuild-dev": "^0.2.5",
