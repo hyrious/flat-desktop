@@ -31,7 +31,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
     "@loadable/component": "^5.15.0",
-    "@netless/combine-player": "^1.1.5",
+    "@netless/combine-player": "^1.1.6",
     "@netless/cursor-tool": "^0.1.0",
     "@netless/page-controller": "^0.0.4",
     "@netless/preview-controller": "^0.0.9",
@@ -61,7 +61,9 @@
     "react-router-dom": "^5.2.0",
     "react-router-last-location": "^2.0.1",
     "react-use": "^17.2.4",
+    "react-virtualized": "^9.22.3",
     "uuid": "^8.3.2",
+    "video.js": "7.10.2",
     "white-web-sdk": "^2.12.15"
   },
   "scripts": {
