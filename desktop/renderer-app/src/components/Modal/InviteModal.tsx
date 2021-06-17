@@ -8,6 +8,9 @@ import { RoomItem } from "../../stores/RoomStore";
 import { GlobalStoreContext, RoomStoreContext } from "../StoreProvider";
 import { clipboard } from "electron";
 import { errorTips } from "../Tips/ErrorTips";
+import { FLAT_SERVER_DOMAIN } from "../../constants/Process";
+
+const FLAT_SERVER_PROTOCOL = `https://${FLAT_SERVER_DOMAIN}`;
 
 export interface InviteModalProps {
     visible: boolean;
@@ -46,6 +49,7 @@ export const InviteModal = observer<InviteModalProps>(function InviteModal({
 
     return (
         <InviteModalImpl
+            protocol={FLAT_SERVER_PROTOCOL}
             visible={visible}
             room={room}
             userName={globalStore.userName ?? ""}

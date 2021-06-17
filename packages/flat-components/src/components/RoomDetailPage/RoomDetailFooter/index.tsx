@@ -13,6 +13,7 @@ export interface RoomDetailFooterProps {
     userName: string;
     isCreator: boolean;
     isPeriodicDetailsPage: boolean;
+    protocol: string;
     // repeated weeks for periodic rooms
     periodicWeeks?: Week[];
     onJoinRoom: () => void;
@@ -25,6 +26,7 @@ export interface RoomDetailFooterProps {
 export const RoomDetailFooter = observer<RoomDetailFooterProps>(function RoomDetailFooter({
     room,
     userName,
+    protocol,
     isCreator,
     isPeriodicDetailsPage,
     periodicWeeks,
@@ -84,6 +86,7 @@ export const RoomDetailFooter = observer<RoomDetailFooterProps>(function RoomDet
             <InviteModal
                 visible={isShowInviteModal}
                 room={room}
+                protocol={protocol}
                 periodicWeeks={periodicWeeks}
                 userName={userName}
                 onCopy={text => {

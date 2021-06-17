@@ -14,6 +14,9 @@ import { RouteNameType, RouteParams, usePushHistory } from "../../utils/routes";
 import { joinRoomHandler } from "../utils/joinRoomHandler";
 import { RoomStatus } from "../../apiMiddleware/flatServer/constants";
 import { message } from "antd";
+import { FLAT_SERVER_DOMAIN } from "../../constants/Process";
+
+const FLAT_SERVER_PROTOCOL = `https://${FLAT_SERVER_DOMAIN}`;
 
 export const RoomDetailPage = observer<{}>(function RoomDetailPage() {
     useWindowSize("Main");
@@ -131,6 +134,7 @@ export const RoomDetailPage = observer<{}>(function RoomDetailPage() {
             </div>
             <div className="room-detail-page-container">
                 <RoomDetailPanel
+                    protocol={FLAT_SERVER_PROTOCOL}
                     roomInfo={roomInfo}
                     room={roomInfo}
                     userName={roomInfo.ownerUserName || ""}

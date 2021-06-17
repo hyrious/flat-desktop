@@ -28,6 +28,7 @@ Overview.args = {
         beginTime: 1619771930756,
         endTime: 1619775530756,
     },
+    protocol: "https://flat-api.whiteboard.agora.io/join/34513345f235",
     periodicWeeks: [Week.Friday, Week.Saturday, Week.Sunday],
     isCreator: true,
     userName: "Flat",

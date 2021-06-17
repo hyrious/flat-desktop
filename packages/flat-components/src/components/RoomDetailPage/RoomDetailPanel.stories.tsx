@@ -32,6 +32,7 @@ Overview.args = {
     roomInfo,
     room: roomInfo,
     userName: "Flat",
+    protocol: "https://flat-api.whiteboard.agora.io/join/34513345f235",
     periodicWeeks: [Week.Friday, Week.Sunday, Week.Wednesday],
     isCreator: true,
     isPeriodicDetailsPage: false,

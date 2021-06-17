@@ -15,6 +15,9 @@ import { RouteNameType, RouteParams, usePushHistory } from "../../utils/routes";
 import { joinRoomHandler } from "../utils/joinRoomHandler";
 import { RoomStatus } from "../../apiMiddleware/flatServer/constants";
 import { message } from "antd";
+import { FLAT_SERVER_DOMAIN } from "../../constants/Process";
+
+const FLAT_SERVER_PROTOCOL = `https://${FLAT_SERVER_DOMAIN}`;
 
 export const RoomDetailPage = observer(function RoomDetailPage() {
     const { roomUUID, periodicUUID } = useParams<RouteParams<RouteNameType.RoomDetailPage>>();
@@ -118,6 +121,7 @@ export const RoomDetailPage = observer(function RoomDetailPage() {
         <div className="room-detail-page-container">
             <div className="room-detail-page-panel-container">
                 <RoomDetailPanel
+                    protocol={FLAT_SERVER_PROTOCOL}
                     showRoomCountVisible={
                         periodicUUID ? roomInfo.roomStatus !== RoomStatus.Stopped : false
                     }

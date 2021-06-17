@@ -11,6 +11,9 @@ import { errorTips } from "../../components/Tips/ErrorTips";
 import { globalStore } from "../../stores/GlobalStore";
 import { RouteNameType, RouteParams, usePushHistory } from "../../utils/routes";
 import { cancelPeriodicRoom, cancelPeriodicSubRoom } from "../../apiMiddleware/flatServer";
+import { FLAT_SERVER_DOMAIN } from "../../constants/Process";
+
+const FLAT_SERVER_PROTOCOL = `https://${FLAT_SERVER_DOMAIN}`;
 
 export const PeriodicRoomDetailPage = observer<{}>(function PeriodicRoomDetailPage() {
     const params = useParams<RouteParams<RouteNameType.PeriodicRoomDetailPage>>();
@@ -133,6 +136,7 @@ export const PeriodicRoomDetailPage = observer<{}>(function PeriodicRoomDetailPa
         <div className="periodic-room-detail-page-container">
             <div className="periodic-room-detail-page-panel-container">
                 <PeriodicRoomPanel
+                    protocol={FLAT_SERVER_PROTOCOL}
                     rooms={rooms}
                     userName={ownerUserName}
                     isCreator={isCreator}

@@ -22,6 +22,10 @@ import { RoomItem } from "../../../stores/RoomStore";
 import { useSafePromise } from "../../../utils/hooks/lifecycle";
 import { RouteNameType, usePushHistory } from "../../../utils/routes";
 import { joinRoomHandler } from "../../utils/joinRoomHandler";
+import { FLAT_SERVER_DOMAIN } from "../../../constants/Process";
+
+const FLAT_SERVER_PROTOCOL = `https://${FLAT_SERVER_DOMAIN}`;
+
 
 export interface MainRoomListProps {
     listRoomsType: ListRoomsType;
@@ -182,6 +186,7 @@ export const MainRoomList = observer<MainRoomListProps>(function MainRoomList({ 
             )}
             {currentRoom && (
                 <InviteModal
+                    protocol={FLAT_SERVER_PROTOCOL}
                     visible={inviteModalVisible}
                     room={currentRoom}
                     userName={globalStore.userName ?? ""}

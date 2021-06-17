@@ -14,6 +14,9 @@ import { globalStore } from "../../stores/GlobalStore";
 import { useWindowSize } from "../../utils/hooks/useWindowSize";
 import { RouteNameType, RouteParams, usePushHistory } from "../../utils/routes";
 import { cancelPeriodicRoom, cancelPeriodicSubRoom } from "../../apiMiddleware/flatServer";
+import { FLAT_SERVER_DOMAIN } from "../../constants/Process";
+
+const FLAT_SERVER_PROTOCOL = `https://${FLAT_SERVER_DOMAIN}`;
 
 export const PeriodicRoomDetailPage = observer<{}>(function PeriodicRoomDetailPage() {
     useWindowSize("Main");
@@ -138,6 +141,7 @@ export const PeriodicRoomDetailPage = observer<{}>(function PeriodicRoomDetailPa
                 </div>
                 <div className="periodic-room-detail-page-panel-container fancy-scrollbar">
                     <PeriodicRoomPanel
+                        protocol={FLAT_SERVER_PROTOCOL}
                         rooms={rooms}
                         userName={ownerUserName}
                         isCreator={isCreator}
