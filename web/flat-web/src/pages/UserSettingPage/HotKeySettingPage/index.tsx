@@ -1,9 +1,9 @@
 import "./index.less";
 
-import { Table } from "antd";
-import React from "react";
-import { UserSettingLayoutContainer } from "../UserSettingLayoutContainer";
+import React, { useState } from "react";
+import { Select, Table } from "antd";
 import { useTranslation } from "react-i18next";
+import { UserSettingLayoutContainer } from "../UserSettingLayoutContainer";
 
 interface HotKeyTable {
     name: string;
@@ -19,6 +19,7 @@ interface HotKey {
 
 export const HotKeySettingPage = (): React.ReactElement => {
     const { t } = useTranslation();
+    const [tablet, setTablet] = useState("");
 
     const HotKeyTableTitleList = [
         {
@@ -149,6 +150,15 @@ export const HotKeySettingPage = (): React.ReactElement => {
                         pagination={false}
                         scroll={{ y: 500 }}
                     />
+                </div>
+                <div className="hotkey-tablet-content">
+                    <label className="hotkey-tablet-title" htmlFor="hotkey-tablet-panel">
+                        {t("tablet-support")}
+                    </label>
+                    <Select id="hotkey-tablet-panel" value={tablet} onChange={setTablet}>
+                        <Select.Option value="">{t("no-tablet")}</Select.Option>
+                        <Select.Option value="classin">Classin X</Select.Option>
+                    </Select>
                 </div>
             </div>
         </UserSettingLayoutContainer>

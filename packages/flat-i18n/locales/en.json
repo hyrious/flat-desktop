@@ -453,5 +453,7 @@
     "math_1": "Coordinate Axis",
     "english_1": "Four Lines and Three Grids",
     "chinese_1": "Tin Word Format"
-  }
+  },
+  "tablet-support": "Pen Tablet Support",
+  "no-tablet": "Off"
 }

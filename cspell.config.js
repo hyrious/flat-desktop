@@ -136,6 +136,7 @@ module.exports = {
         "APPVERSION",
         "eslintignore",
         "corepack",
+        "classin",
 
         // CNCF
         "nindent",
