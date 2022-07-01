@@ -1,13 +1,15 @@
-## flat-next-template
+## Flat Next
 
-Made with Agora-Electron-SDK (education290) and electron 11.3.0.
+An attempt to take Flat to the next generation.
 
-### TODO
+### Structure
 
--   `npm audit: yargs - just-task - agora-electron-sdk`
+| folder  | description                            |
+| ------- | -------------------------------------- |
+| main    | electron main process                  |
+| src     | both web and electron renderer process |
+| src/rtc | unified service of agora rtc           |
 
-    > **Prototype Pollution** - https://npmjs.com/advisories/1500
+## License
 
-## Licence
-
-MIT @ [Agora](https://agora.io)
+MIT.
