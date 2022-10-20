@@ -6,9 +6,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "build": "echo",
-    "postinstall": "pnpm _download:agora-addon",
-    "_download:agora-addon": "node scripts/download-agora-addon/cli.js"
+    "build": "echo"
   },
   "devDependencies": {
     "prettier": "^2.7.1",
@@ -16,8 +14,12 @@
   },
   "dependencies": {
     "@netless/flat-services": "workspace:*",
-    "agora-electron-sdk": "3.7.0-build.527",
+    "agora-electron-sdk": "4.0.0",
     "fs-extra": "^10.1.0",
     "side-effect-manager": "^1.2.1"
+  },
+  "agora_electron": {
+    "prebuilt": true,
+    "arch": "x64"
   }
 }
