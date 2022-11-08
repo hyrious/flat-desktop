@@ -39,10 +39,6 @@ export const ReplayPage = observer<ReplayPageProps>(function ReplayPage({ match 
         history.goBack();
     };
 
-    const onStageUsersLength = classroomReplayStore.currentRecording
-        ? classroomReplayStore.onStageUsers.length + 1
-        : 0;
-
     return (
         <div className="replay-container">
             {windowsBtn && (
@@ -54,15 +50,6 @@ export const ReplayPage = observer<ReplayPageProps>(function ReplayPage({ match 
             )}
             <div className="replay-videos is-horizontal">
                 <ReplayVideo classroomReplayStore={classroomReplayStore} />
-                <div
-                    className="replay-mask"
-                    style={
-                        {
-                            "--width": `${144 * (17 - onStageUsersLength)}px`,
-                            "--left": `${144 * onStageUsersLength}px`,
-                        } as React.CSSProperties
-                    }
-                />
             </div>
             <div className="replay-content">
                 <ReplayWhiteboard classroomReplayStore={classroomReplayStore} />

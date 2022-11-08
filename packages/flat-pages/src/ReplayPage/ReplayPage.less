@@ -17,19 +17,26 @@
     position: relative;
 }
 
-.replay-mask {
-    position: absolute;
-    top: 0;
-    left: var(--left);
-    width: var(--width);
-    height: 100%;
-    background-color: var(--grey-0);
-}
-
 .replay-video {
-    width: auto;
-    height: 100%;
+    width: fit-content;
+    height: fit-content;
     font-size: 0;
+    position: relative;
+
+    video {
+        width: 144px * 17;
+        height: 108px;
+        display: none; // will be handled by js
+    }
+
+    canvas {
+        width: 144px * 17;
+        height: 108px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 1;
+    }
 }
 
 .replay-content {
