@@ -1,4 +1,4 @@
-import { session } from "electron";
+import { session, systemPreferences } from "electron";
 
 export default (): void => {
     // fix electron bug
@@ -19,4 +19,9 @@ export default (): void => {
         }
         callback({});
     });
+
+    if (systemPreferences.askForMediaAccess) {
+        systemPreferences.askForMediaAccess("camera");
+        systemPreferences.askForMediaAccess("microphone");
+    }
 };
