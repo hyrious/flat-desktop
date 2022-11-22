@@ -75,6 +75,7 @@ export class AgoraRTCElectron extends IServiceVideoChat {
     }
 
     private _init(): void {
+        console.log("[agora-rtc-electron] init");
         this.engine.initialize({
             appId: this.APP_ID,
             channelProfile: ChannelProfileType.ChannelProfileLiveBroadcasting,
@@ -151,6 +152,7 @@ export class AgoraRTCElectron extends IServiceVideoChat {
     }
 
     public override async destroy(): Promise<void> {
+        console.log("[agora-rtc-electron] destroy");
         super.destroy();
         this.sideEffect.flushAll();
         await this.leaveRoom();
@@ -176,7 +178,7 @@ export class AgoraRTCElectron extends IServiceVideoChat {
         this.roomUUID = void 0;
         this.mode = void 0;
         this.shareScreenUID = void 0;
-        // this.shareScreen.setActive(false);
+        this.shareScreen.setActive(false);
         this.shareScreen.setParams(null);
     }
 
@@ -392,12 +394,8 @@ export class AgoraRTCElectron extends IServiceVideoChat {
                 : ChannelProfileType.ChannelProfileCommunication;
         this.engine.setChannelProfile(channelProfile);
         this.engine.setVideoEncoderConfiguration({
-            bitrate: 0,
             degradationPreference: 1,
             frameRate: 15,
-            minBitrate: -1,
-            mirrorMode: 0,
-            orientationMode: 0,
             dimensions: {
                 width: 288,
                 height: 216,
@@ -412,7 +410,9 @@ export class AgoraRTCElectron extends IServiceVideoChat {
             );
         }
 
+        console.log("[join] enableAudio");
         this.engine.enableAudio();
+        console.log("[join] enableVideo");
         this.engine.enableVideo();
         // prevent camera being turned on temporarily right after joining room
         this.engine.enableLocalAudio(false);

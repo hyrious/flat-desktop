@@ -97,7 +97,7 @@ importers:
       '@types/webpack-env': ^1.18.0
       dotenv-flow: ^3.2.0
       dotenv-flow-webpack: ^1.1.0
-      electron: 21.3.0
+      electron: 18.2.3
       electron-builder: ^23.3.3
       electron-devtools-vendor: ^1.1.0
       electron-notarize: ^1.2.1
@@ -128,7 +128,7 @@ importers:
       '@types/webpack-env': 1.18.0
       dotenv-flow: 3.2.0
       dotenv-flow-webpack: 1.1.0
-      electron: 21.3.0
+      electron: 18.2.3
       electron-builder: 23.3.3
       electron-devtools-vendor: 1.1.0
       electron-notarize: 1.2.1
@@ -180,7 +180,7 @@ importers:
       classnames: ^2.3.1
       date-fns: ^2.29.3
       dotenv-expand: ^9.0.0
-      electron: 21.3.0
+      electron: 18.2.3
       emittery: ^1.0.0
       esbuild: ^0.15.8
       extract-zip: ^2.0.1
@@ -266,7 +266,7 @@ importers:
       '@types/lodash': 4.14.185
       '@types/node-downloader-helper': 1.0.16
       '@types/react-router': 5.1.19
-      electron: 21.3.0
+      electron: 18.2.3
       esbuild: 0.15.8
       flat-types: link:../../packages/flat-types
       monaco-editor: 0.27.0
@@ -5641,6 +5641,7 @@ packages:
     requiresBuild: true
     dependencies:
       '@types/node': 18.7.9
+    dev: false
     optional: true
 
   /@typescript-eslint/eslint-plugin/5.38.0_wsb62dxj2oqwgas4kadjymcmry:
@@ -9738,15 +9739,15 @@ packages:
       - supports-color
     dev: false
 
-  /electron/21.3.0:
-    resolution: {integrity: sha512-MGRpshN8fBcx4IRuBABIsGDv0tB/MclIFsyFHFFXsBCUc+vIXaE/E6vuWaniGIFSz5WyeuapfTH5IeRb+7yIfw==}
-    engines: {node: '>= 10.17.0'}
+  /electron/18.2.3:
+    resolution: {integrity: sha512-DJWX03hCRKTscsfXxmW4gmgFuseop+g+m4ml7NfOMfankD8uYyr2Xyi3Ui02inL9qZOlbLMeLVCu6jKCKs8p/w==}
+    engines: {node: '>= 8.6'}
     hasBin: true
     requiresBuild: true
     dependencies:
       '@electron/get': 1.14.1
       '@types/node': 16.18.3
-      extract-zip: 2.0.1
+      extract-zip: 1.7.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -10939,6 +10940,18 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
+  /extract-zip/1.7.0:
+    resolution: {integrity: sha512-xoh5G1W/PB0/27lXgMQyIhP5DSY/LhoCsOyZgb+6iMmRtCwVBo55uKaMoEYrDCKQhWvqEip5ZPKAc6eFNyf/MA==}
+    hasBin: true
+    dependencies:
+      concat-stream: 1.6.2
+      debug: 2.6.9
+      mkdirp: 0.5.6
+      yauzl: 2.10.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /extract-zip/2.0.1:
     resolution: {integrity: sha512-GDhU9ntwuKyGXdZBUgTIe+vXnWj0fppUEtMDL0+idd5Sta8TGpHssn/eusA9mrPr9qNDym6SxAYZjNvCn/9RBg==}
     engines: {node: '>= 10.17.0'}
@@ -10951,6 +10964,7 @@ packages:
       '@types/yauzl': 2.10.0
     transitivePeerDependencies:
       - supports-color
+    dev: false
 
   /extsprintf/1.4.1:
     resolution: {integrity: sha512-Wrk35e8ydCKDj/ArClo1VrPVmN8zph5V4AtHwIuHhvMXsKf73UT3BOD+azBIW+3wOJ4FhEH7zyaJCFvChjYvMA==}
