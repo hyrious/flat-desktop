@@ -13,6 +13,7 @@ import {
 } from "@netless/flat-services";
 import { SideEffectManager } from "side-effect-manager";
 import { Val, combine } from "value-enhancer";
+import { VideoProfileLandscape480p4 } from "./constants";
 
 const { createAgoraRtcEngine, RenderModeType, ScreenCaptureSourceType, ChannelProfileType } =
     require("agora-electron-sdk") as typeof import("agora-electron-sdk");
@@ -163,6 +164,7 @@ export class AgoraRTCElectronShareScreen extends IServiceShareScreen {
 
         this._pTogglingShareScreen = new Promise<void>(resolve => {
             const handler = (): void => {
+                this.engine.setVideoEncoderConfiguration(VideoProfileLandscape480p4);
                 const { width, height } = screenInfo;
                 if (screenInfo.type === "display") {
                     this.engine.startScreenCaptureByDisplayId(
@@ -177,11 +179,14 @@ export class AgoraRTCElectronShareScreen extends IServiceShareScreen {
                         { ...screenCaptureParams, dimensions: { width, height } },
                     );
                 }
-                resolve();
                 this.engine.removeListener("onJoinChannelSuccess", handler);
+                resolve();
             };
             this.engine.addListener("onJoinChannelSuccess", handler);
-            this.engine.setChannelProfile(ChannelProfileType.ChannelProfileLiveBroadcasting);
+            this.engine.initialize({
+                appId: this.APP_ID,
+                channelProfile: ChannelProfileType.ChannelProfileLiveBroadcasting,
+            });
             this.engine.joinChannel(token, roomUUID, Number(uid), {});
         });
         await this._pTogglingShareScreen;
@@ -199,11 +204,13 @@ export class AgoraRTCElectronShareScreen extends IServiceShareScreen {
         this._lastEnabled = false;
 
         this._pTogglingShareScreen = new Promise<void>(resolve => {
-            this.engine.once("videoSourceLeaveChannel", () => {
-                this.engine.videoSourceRelease();
+            const handler = (): void => {
+                this.engine.removeListener("onLeaveChannel", handler);
+                this.engine.release();
                 resolve();
-            });
-            this.engine.videoSourceLeave();
+            };
+            this.engine.addListener("onLeaveChannel", handler);
+            this.engine.leaveChannel();
         });
         await this._pTogglingShareScreen;
         this._pTogglingShareScreen = undefined;

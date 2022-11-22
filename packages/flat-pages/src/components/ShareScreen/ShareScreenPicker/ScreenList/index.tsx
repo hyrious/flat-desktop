@@ -8,14 +8,6 @@ import { IServiceShareScreenInfo } from "@netless/flat-services";
 import { ClassroomStore } from "@netless/flat-stores";
 import { message } from "antd";
 
-const uint8ArrayToImageURL = (buffer: Uint8Array): string => {
-    return URL.createObjectURL(
-        new Blob([buffer.buffer], {
-            type: "image/png",
-        }),
-    );
-};
-
 interface ScreenListProps {
     screenInfo: IServiceShareScreenInfo[];
     classroomStore: ClassroomStore;
@@ -81,19 +73,21 @@ const ScreenItem = observer<ScreenItemProps>(function ScreenItem({
     active,
     activeKey,
 }) {
+    const renderImage = useCallback(
+        (div: HTMLDivElement | null) => {
+            div && info.image(div);
+        },
+        [info],
+    );
+
     return (
-        <>
-            <div className="screen-item">
-                <div
-                    className={classNames("screen-image-box", {
-                        active,
-                    })}
-                    onClick={() => handleClick(info, activeKey)}
-                >
-                    <img alt="screenshots" src={uint8ArrayToImageURL(info.image)} />
-                </div>
-                <span>{info.name}</span>
-            </div>
-        </>
+        <div className="screen-item" data-screen-id={JSON.stringify(info.screenId)}>
+            <div
+                ref={renderImage}
+                className={classNames("screen-image-box", { active })}
+                onClick={() => handleClick(info, activeKey)}
+            />
+            <span>{info.name}</span>
+        </div>
     );
 });
