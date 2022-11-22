@@ -1,0 +1,1 @@
+export const LOW_VOLUME_LEVEL_THRESHOLD = 0.00001;

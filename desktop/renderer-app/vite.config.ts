@@ -92,7 +92,7 @@ export default defineConfig((): UserConfig => {
         },
         clearScreen: false,
         optimizeDeps: {
-            exclude: [...electron.externals, "fs-extra", "extract-zip"],
+            exclude: [...electron.externals, "fs-extra", "extract-zip", "agora-electron-sdk"],
         },
         css: {
             preprocessorOptions: {

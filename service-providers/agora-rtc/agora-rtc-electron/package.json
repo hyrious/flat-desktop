@@ -16,7 +16,8 @@
     "@netless/flat-services": "workspace:*",
     "agora-electron-sdk": "4.0.1-rc.2",
     "fs-extra": "^10.1.0",
-    "side-effect-manager": "^1.2.1"
+    "side-effect-manager": "^1.2.1",
+    "value-enhancer": "^1.3.2"
   },
   "agora_electron": {
     "prebuilt": true,

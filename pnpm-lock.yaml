@@ -586,11 +586,13 @@ importers:
       prettier: ^2.7.1
       side-effect-manager: ^1.2.1
       typescript: ^4.8.3
+      value-enhancer: ^1.3.2
     dependencies:
       '@netless/flat-services': link:../../../packages/flat-services
       agora-electron-sdk: 4.0.1-rc.2
       fs-extra: 10.1.0
       side-effect-manager: 1.2.1
+      value-enhancer: 1.3.2
     devDependencies:
       prettier: 2.7.1
       typescript: 4.8.3
