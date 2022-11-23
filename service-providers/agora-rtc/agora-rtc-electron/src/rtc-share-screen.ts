@@ -35,6 +35,29 @@ const screenCaptureParams: ScreenCaptureParameters = {
     excludeWindowCount: 0,
 };
 
+/** This is a fake class that for debug purpose only. */
+export class FakeAgoraRTCElectronShareScreen extends IServiceShareScreen {
+    public constructor(config: AgoraRTCElectronShareScreenAvatarConfig) {
+        super();
+        console.log("[FakeAgoraRTCElectronShareScreen] constructor", config);
+    }
+    public setActive(active: boolean): void {
+        console.log("[FakeAgoraRTCElectronShareScreen] setActive", active);
+    }
+    public setParams(params: IServiceShareScreenParams | null): void {
+        console.log("[FakeAgoraRTCElectronShareScreen] setParams", params);
+    }
+    public enable(enabled: boolean): void {
+        console.log("[FakeAgoraRTCElectronShareScreen] enable", enabled);
+    }
+    public setElement(element: HTMLElement | null): void {
+        console.log("[FakeAgoraRTCElectronShareScreen] setElement", element);
+    }
+    public shouldSubscribeRemoteTrack(): boolean {
+        return false;
+    }
+}
+
 export class AgoraRTCElectronShareScreen extends IServiceShareScreen {
     private readonly APP_ID: string;
 

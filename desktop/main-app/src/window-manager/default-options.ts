@@ -28,7 +28,6 @@ export const defaultBrowserWindowOptions: BrowserWindowConstructorOptions = {
         contextIsolation: false,
         webSecurity: false,
         webviewTag: true,
-        nativeWindowOpen: true,
         backgroundThrottling: false,
         nodeIntegrationInSubFrames: false,
     },

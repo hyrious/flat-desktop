@@ -20,7 +20,7 @@ import { SideEffectManager } from "side-effect-manager";
 
 import { RTCLocalAvatar } from "./rtc-local-avatar";
 import { RTCRemoteAvatar } from "./rtc-remote-avatar";
-import { AgoraRTCElectronShareScreen } from "./rtc-share-screen";
+import { FakeAgoraRTCElectronShareScreen } from "./rtc-share-screen";
 import { LOW_VOLUME_LEVEL_THRESHOLD } from "./constants";
 
 // Note: we must use the global "require()" function to import agora-electron-sdk
@@ -32,12 +32,34 @@ export interface AgoraRTCElectronConfig {
     APP_ID: string;
 }
 
+function verbose<T extends object>(obj: T): T {
+    return new Proxy(obj, {
+        get(target, prop) {
+            // console.log(`[agora-rtc-electron] engine.${String(prop)}`);
+            const data = Reflect.get(target, prop);
+            if (typeof data === "function") {
+                return (...args: any[]) => {
+                    (prop === "setupLocalVideo" ? console.trace : console.log).call(
+                        console,
+                        `[agora-rtc-electron] engine.${String(prop)}(${args
+                            .map(String)
+                            .join(", ")})`,
+                    );
+                    return data.apply(target, args);
+                };
+            } else {
+                return data;
+            }
+        },
+    });
+}
+
 export class AgoraRTCElectron extends IServiceVideoChat {
     public readonly APP_ID: string;
 
-    public readonly engine: IRtcEngine = createAgoraRtcEngine();
+    public readonly engine: IRtcEngine = verbose(createAgoraRtcEngine());
 
-    public readonly shareScreen = new AgoraRTCElectronShareScreen(this);
+    public readonly shareScreen = new FakeAgoraRTCElectronShareScreen(this);
 
     private readonly _roomSideEffect = new SideEffectManager();
 
@@ -72,6 +94,10 @@ export class AgoraRTCElectron extends IServiceVideoChat {
         super();
         this.APP_ID = APP_ID;
         this._init();
+
+        if (process.env.NODE_ENV === "development") {
+            (window as any).__agoraRTC = this;
+        }
     }
 
     private _init(): void {

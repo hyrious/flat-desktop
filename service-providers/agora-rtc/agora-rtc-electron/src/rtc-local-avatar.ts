@@ -22,6 +22,7 @@ export class RTCLocalAvatar implements IServiceVideoChatAvatar {
     private readonly _shouldMic$ = new Val(false);
 
     private readonly _el$: Val<RTCLocalAvatarConfig["element"]>;
+    private _el: HTMLElement | null = null;
 
     public enableCamera(enabled: boolean): void {
         this._shouldCamera$.setValue(enabled);
@@ -48,16 +49,19 @@ export class RTCLocalAvatar implements IServiceVideoChatAvatar {
             this._el$.subscribe(el => {
                 try {
                     if (el) {
+                        this._el = el;
                         if (this._shouldCamera$.value || this._shouldMic$.value) {
                             this.engine.setClientRole(ClientRoleType.ClientRoleBroadcaster);
                         }
-                        this.engine.setupLocalVideo({ view: el });
+                        this.engine.setupLocalVideo({ uid: 0, view: el });
                         this.engine.enableLocalAudio(this._shouldMic$.value);
                         this.engine.enableLocalVideo(this._shouldCamera$.value);
                     } else {
+                        this.engine.destroyRendererByView(this._el);
                         this.engine.enableLocalAudio(false);
                         this.engine.enableLocalVideo(false);
                         this.engine.setClientRole(ClientRoleType.ClientRoleAudience);
+                        this._el = null;
                     }
                 } catch (e) {
                     console.error(e);
