@@ -1,6 +1,7 @@
 export enum WindowsName {
     Main = "Main",
     ShareScreenTip = "ShareScreenTip",
+    ShareScreenBoard = "ShareScreenBoard",
     PreviewFile = "PreviewFile",
 }
 

@@ -20,6 +20,23 @@ class PortalWindowManager {
         return shareScreenTipWindow;
     }
 
+    public async createShareScreenBoardPortalWindow(
+        containerElement: HTMLDivElement,
+        title: string,
+    ): Promise<PortalWindow> {
+        const shareScreenBoardWindow = await this.createWindow(
+            containerElement,
+            {
+                name: constants.WindowsName.ShareScreenBoard,
+            },
+            title,
+        );
+
+        shareScreenBoardWindow.document.body.style.overflow = "hidden";
+
+        return shareScreenBoardWindow;
+    }
+
     public async createPreviewFilePortalWindow(
         containerElement: HTMLDivElement,
         title: string,
