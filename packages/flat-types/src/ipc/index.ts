@@ -24,6 +24,7 @@ export type WindowActionAsync = {
     "set-visual-zoom-level": (args: { minimumLevel: number; maximumLevel: number }) => void;
     "set-win-status": (args: { windowStatus: WindowStatus }) => void;
     "set-theme": (args: { theme: "light" | "dark" | "auto" }) => void;
+    "toggle-mouse-events": (args: { enable: boolean }) => void;
 };
 
 export type AppActionAsync = {

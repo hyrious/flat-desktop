@@ -107,6 +107,9 @@ export class ClassroomStore {
     /** (electron only) */
     public shareScreenInfo: IServiceShareScreenInfo[] = [];
 
+    /** `true` = can draw on board, `false` = can operate other programs */
+    public isShareScreenBoardEnabled = false;
+
     public selectedScreenInfo: IServiceShareScreenInfo | null = null;
     public shareScreenWithAudio = false;
     public shareScreenAudioDeviceName = "";
@@ -1066,6 +1069,10 @@ export class ClassroomStore {
         this.isRemoteScreenSharing = remote;
     };
 
+    public toggleShareScreenBoard = (enabled = !this.isShareScreenBoardEnabled): void => {
+        this.isShareScreenBoardEnabled = enabled;
+    };
+
     public refreshShareScreenInfo = async (): Promise<void> => {
         this.selectShareScreenInfo(null);
         this.shareScreenInfo = [];
@@ -1106,6 +1113,7 @@ export class ClassroomStore {
         const deviceName = this.shareScreenWithAudio ? this.shareScreenAudioDeviceName : undefined;
         this.rtc.shareScreen.enable(force, deviceName);
         this.toggleShareScreenPicker(false);
+        this.toggleShareScreenBoard(false);
     };
 
     public acceptRaiseHand = (userUUID: string): void => {

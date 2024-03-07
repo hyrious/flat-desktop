@@ -2,6 +2,7 @@ import { WindowsBtnContextInterface } from "@netless/flat-pages/src/components/W
 import { WindowsSystemBtnItem } from "flat-components";
 import {
     ipcAsyncByMainWindow,
+    ipcAsyncByShareScreenBoardWindow,
     ipcAsyncByShareScreenTipWindow,
     ipcReceive,
     ipcReceiveRemove,
@@ -39,6 +40,18 @@ export class WindowsBtnContext implements WindowsBtnContextInterface {
     ): (() => void) => {
         portalWindowManager.createShareScreenTipPortalWindow(div, title);
         return () => ipcAsyncByShareScreenTipWindow("force-close-window", {});
+    };
+
+    public createShareScreenBoardPortalWindow = (
+        div: HTMLDivElement,
+        title: string,
+    ): (() => void) => {
+        portalWindowManager.createShareScreenBoardPortalWindow(div, title);
+        return () => ipcAsyncByShareScreenBoardWindow("force-close-window", {});
+    };
+
+    public toggleShareScreenBoard = (enable: boolean): void => {
+        ipcAsyncByShareScreenBoardWindow("toggle-mouse-events", { enable });
     };
 }
 

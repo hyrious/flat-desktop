@@ -8,4 +8,6 @@ export interface WindowsBtnContextInterface {
     removeWindowWillCloseEvent: () => void;
     openExternalBrowser: (url: string) => void;
     createShareScreenTipPortalWindow: (div: HTMLDivElement, title: string) => () => void;
+    createShareScreenBoardPortalWindow: (div: HTMLDivElement, title: string) => () => void;
+    toggleShareScreenBoard: (enable: boolean) => void;
 }

@@ -76,7 +76,10 @@ export const BigClassPage = withClassroomStore<BigClassPageProps>(
                         )}
                         <div className="big-class-realtime-content">
                             <div className="big-class-realtime-content-container">
-                                <ShareScreen classroomStore={classroomStore} />
+                                <ShareScreen
+                                    classroomStore={classroomStore}
+                                    whiteboardStore={whiteboardStore}
+                                />
                                 <ShareScreenPicker
                                     classroomStore={classroomStore}
                                     handleOk={() => classroomStore.toggleShareScreen(true)}

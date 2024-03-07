@@ -95,7 +95,10 @@ export const SmallClassPage = withClassroomStore<SmallClassPageProps>(
                         {renderAvatars()}
                         <div className="small-class-realtime-content">
                             <div className="small-class-realtime-content-container">
-                                <ShareScreen classroomStore={classroomStore} />
+                                <ShareScreen
+                                    classroomStore={classroomStore}
+                                    whiteboardStore={whiteboardStore}
+                                />
                                 <ShareScreenPicker
                                     classroomStore={classroomStore}
                                     handleOk={() => classroomStore.toggleShareScreen(true)}

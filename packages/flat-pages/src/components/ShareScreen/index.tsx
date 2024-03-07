@@ -5,15 +5,20 @@ import classNames from "classnames";
 import { message } from "antd";
 import { observer } from "mobx-react-lite";
 import { useTranslate } from "@netless/flat-i18n";
-import { ClassroomStore } from "@netless/flat-stores";
+import { ClassroomStore, WhiteboardStore } from "@netless/flat-stores";
 
 import { ShareScreenTip } from "./ShareScreenTip";
+import { ShareScreenBoard } from "./ShareScreenBoard";
 
 interface ShareScreenProps {
     classroomStore: ClassroomStore;
+    whiteboardStore: WhiteboardStore;
 }
 
-export const ShareScreen = observer<ShareScreenProps>(function ShareScreen({ classroomStore }) {
+export const ShareScreen = observer<ShareScreenProps>(function ShareScreen({
+    classroomStore,
+    whiteboardStore,
+}) {
     const ref = useRef<HTMLDivElement>(null);
     const t = useTranslate();
 
@@ -47,6 +52,12 @@ export const ShareScreen = observer<ShareScreenProps>(function ShareScreen({ cla
         return (
             <>
                 <div ref={ref} className={classNameList} />
+                {classroomStore.isScreenSharing && (
+                    <ShareScreenBoard
+                        enabled={classroomStore.isShareScreenBoardEnabled}
+                        whiteboardStore={whiteboardStore}
+                    />
+                )}
                 {classroomStore.isScreenSharing && (
                     <ShareScreenTip classroomStore={classroomStore} />
                 )}

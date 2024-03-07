@@ -226,6 +226,7 @@ export const Whiteboard = observer<WhiteboardProps>(function Whiteboard({
                                 "hide-cursor-name": !preferences.cursorNameOn,
                             },
                         )}
+                        id="whiteboard"
                     />
                     <UserWindows classroom={classRoomStore} />
                     {!whiteboardStore.isCreator &&

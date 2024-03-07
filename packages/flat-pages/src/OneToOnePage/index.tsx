@@ -70,7 +70,10 @@ export const OneToOnePage = withClassroomStore<OneToOnePageProps>(
                         )}
                         <div className="one-to-one-realtime-content">
                             <div className="one-to-one-realtime-content-container">
-                                <ShareScreen classroomStore={classroomStore} />
+                                <ShareScreen
+                                    classroomStore={classroomStore}
+                                    whiteboardStore={whiteboardStore}
+                                />
                                 <ShareScreenPicker
                                     classroomStore={classroomStore}
                                     handleOk={() => classroomStore.toggleShareScreen(true)}

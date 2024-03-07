@@ -27,7 +27,7 @@ export class WhiteboardStore {
     public readonly sideEffect = new SideEffectManager();
 
     public whiteboard: IServiceWhiteboard;
-    public fastboardAPP: FastboardApp<ClassroomReplayEventData> | null = null;
+    public fastboard: FastboardApp<ClassroomReplayEventData> | null = null;
     public room: Room | null = null;
     public phase: RoomPhase = RoomPhase.Connecting;
     public viewMode: ViewMode | null = null;
@@ -65,7 +65,7 @@ export class WhiteboardStore {
         makeAutoObservable<this, "preloadPPTResource" | "sideEffect">(this, {
             room: observable.ref,
             preloadPPTResource: false,
-            fastboardAPP: false,
+            fastboard: false,
             sideEffect: false,
             whiteboard: false,
         });
@@ -100,8 +100,8 @@ export class WhiteboardStore {
         ]);
     }
 
-    public updateFastboardAPP = (whiteboardApp: FastboardApp<ClassroomReplayEventData>): void => {
-        this.fastboardAPP = whiteboardApp;
+    public updateFastboard = (fastboard: FastboardApp<ClassroomReplayEventData>): void => {
+        this.fastboard = fastboard;
     };
 
     public updateRoom = (room: Room): void => {
@@ -169,11 +169,11 @@ export class WhiteboardStore {
         });
 
         // @TODO remove me after refactoring
-        const fastboardAPP = await (this.whiteboard as any)._app$.value;
+        const fastboard = await (this.whiteboard as any)._app$.value;
 
-        this.updateFastboardAPP(fastboardAPP);
+        this.updateFastboard(fastboard);
 
-        const { room, manager } = fastboardAPP;
+        const { room, manager } = fastboard;
 
         this.updateRoom(room);
 
@@ -184,7 +184,7 @@ export class WhiteboardStore {
             (window as any).manager = manager;
         }
 
-        return fastboardAPP;
+        return fastboard;
     }
 
     public async destroy(): Promise<void> {

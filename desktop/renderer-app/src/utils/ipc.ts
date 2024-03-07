@@ -29,6 +29,20 @@ export const ipcAsyncByShareScreenTipWindow = <
     });
 };
 
+export const ipcAsyncByShareScreenBoardWindow = <
+    T extends keyof ipc.WindowActionAsync,
+    U extends Parameters<ipc.WindowActionAsync[T]>[0],
+>(
+    action: T,
+    args: U,
+): void => {
+    window.electron.ipcRenderer.send(constants.WindowsName.ShareScreenBoard, {
+        actions: action,
+        args,
+        browserWindowID: NaN,
+    });
+};
+
 export const ipcAsyncByPreviewFileWindow = <
     T extends keyof ipc.WindowActionAsync,
     U extends Parameters<ipc.WindowActionAsync[T]>[0],

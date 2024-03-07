@@ -461,7 +461,8 @@
     "tip-window-button": "End Sharing",
     "self": "Share Screen",
     "with-audio": "Share Screen with Audio",
-    "please-turn-on-mic": "Turn on the microphone so that others can hear your voice"
+    "please-turn-on-mic": "Turn on the microphone so that others can hear your voice",
+    "board-window-title": "Whiteboard"
   },
   "app-store": "AppStore(Beta)",
   "recently-used": "Recently Used",

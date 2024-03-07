@@ -131,6 +131,7 @@ export type CustomWindow = {
 export type AbstractWindows = {
     [constants.WindowsName.Main]: AbstractWindow<false>;
     [constants.WindowsName.ShareScreenTip]: AbstractWindow<false>;
+    [constants.WindowsName.ShareScreenBoard]: AbstractWindow<false>;
     [constants.WindowsName.PreviewFile]: AbstractWindow<true>;
 };
 

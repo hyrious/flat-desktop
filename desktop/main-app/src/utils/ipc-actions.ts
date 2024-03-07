@@ -114,6 +114,9 @@ const windowActionAsync = (customWindow: CustomWindow): ipc.WindowActionAsync =>
         "set-theme": args => {
             nativeTheme.themeSource = args.theme === "auto" ? "system" : args.theme;
         },
+        "toggle-mouse-events": args => {
+            window.setIgnoreMouseEvents(!args.enable);
+        },
     };
 };
 

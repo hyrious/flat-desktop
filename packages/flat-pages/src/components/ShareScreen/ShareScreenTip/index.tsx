@@ -32,8 +32,19 @@ export const ShareScreenTip = observer<ShareScreenTipProps>(function ShareScreen
         return;
     }, [containerEl, t, windows]);
 
+    useEffect(() => {
+        if (windows) {
+            windows.toggleShareScreenBoard(classroomStore.isShareScreenBoardEnabled);
+        }
+    }, [windows, classroomStore.isShareScreenBoardEnabled]);
+
     const stopShareScreen = useCallback(
         () => classroomStore.toggleShareScreen(false),
+        [classroomStore],
+    );
+
+    const toggleShareScreenBoard = useCallback(
+        () => classroomStore.toggleShareScreenBoard(),
         [classroomStore],
     );
 
@@ -45,6 +56,9 @@ export const ShareScreenTip = observer<ShareScreenTipProps>(function ShareScreen
             </div>
             <Button danger ghost onClick={stopShareScreen}>
                 {t("share-screen.tip-window-button")}
+            </Button>
+            <Button onClick={toggleShareScreenBoard}>
+                Board: {classroomStore.isShareScreenBoardEnabled}
             </Button>
         </div>,
         containerEl,
